@@ -23,11 +23,11 @@ $f3->config('inc/setup.ini');
 
 // ROUTES
 $f3->route("GET /", 'tasksController->list');
-$f3->route('POST /complete/@id', 'tasksController->complete');
-$f3->route("POST /delete/@id", "tasksController->delete");
+$f3->route("POST /", 'tasksController->completeDelete');
+//$f3->route("POST /@id", "tasksController->delete");
 
 $f3->route("GET /add", 'tasksController->add');
-$f3->route('POST /add', 'tasksController->create');
+$f3->route("POST /add", 'tasksController->create');
 
 $f3->route("GET /details", 'tasksController->details');
 

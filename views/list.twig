@@ -23,9 +23,12 @@
                   </td>
                   <td class="text-right">
                     <form method="POST" class="m-0" action="">
-                      {% if task.completed == 0 %}<input type="submit" class="btn btn-success btn-sm mb-1" value="Complete">{% endif %}
-                      <input type="submit" class="btn btn-warning btn-sm  mb-1" value="Delete">
-                      <input type="hidden" name="id" value="{{ task.id }}" /><br />
+                      {% if task.completed == 0 %}
+                        <input type="submit" class="btn btn-success btn-sm mb-1" value="Complete" name="submit">
+                        <input type="hidden" name="bool" value = "true"/>
+                      {% endif %}
+                      <input type="submit" class="btn btn-warning btn-sm  mb-1" value="Delete" name="submit">
+                      <input type="hidden" name="id" value="{{ task.id }}" />
                     </form>
                   </td>
                 </tr>

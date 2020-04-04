@@ -32,12 +32,17 @@ class tasksController extends mainController{
 	 *
 	 * @return void
 	 */
-	public function complete(){
-		$tasks = $this->model->fetchAll();
-	
-		$this->twig_data["tasks"] =  $tasks;
-
-		echo $this->f3->get('twig')->render("list.twig", $this->twig_data );
+	public function completeDelete(){
+		if ( $this->f3->get('POST.bool') ) {
+			$this->f3->set('POST.date_completed', date('Y-m-d H:i:s'));
+			$this->f3->set('POST.completed', 1);
+			$this->model->edit($this->f3->get('POST.id'));
+			$this->f3->reroute("/");
+		}
+		else  {
+			$this->model->delete($this->f3->get('POST.id'));
+			$this->f3->reroute("/");
+		}
 	}
 
 	/**
@@ -45,13 +50,13 @@ class tasksController extends mainController{
 	 *
 	 * @return void
 	 */
-	public function delete(){
-		$tasks = $this->model->fetchAll();
+	// public function delete(){
+	// 	$tasks = $this->model->fetchAll();
 	
-		$this->twig_data["tasks"] =  $tasks;
+	// 	$this->twig_data["tasks"] =  $tasks;
 
-		echo $this->f3->get('twig')->render("list.twig", $this->twig_data );
-	}
+	// 	echo $this->f3->get('twig')->render("list.twig", $this->twig_data );
+	// }
 
 	/**
 	 * GET form.twig
