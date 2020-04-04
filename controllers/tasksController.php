@@ -33,13 +33,13 @@ class tasksController extends mainController{
 	 * @return void
 	 */
 	public function completeDelete(){
-		if ( $this->f3->get('POST.bool') ) {
+		if ( $this->f3->get('POST.submit') == "Complete" ) {
 			$this->f3->set('POST.date_completed', date('Y-m-d H:i:s'));
 			$this->f3->set('POST.completed', 1);
 			$this->model->edit($this->f3->get('POST.id'));
 			$this->f3->reroute("/");
 		}
-		else  {
+		else if ( $this->f3->get('POST.submit') == "Delete" ) {
 			$this->model->delete($this->f3->get('POST.id'));
 			$this->f3->reroute("/");
 		}
