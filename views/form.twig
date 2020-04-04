@@ -1,0 +1,31 @@
+{% extends "main.twig" %}
+
+{% block page_title %}Add{% endblock %}
+
+{% block main_content %}
+      <div class="row">
+        <div class="col-md-5">
+          <img class="d-none d-md-block my-3 img-fluid" src="images/dont-forget.png">
+        </div>
+        <div class="col-md-7">
+          <h1>Add a New Task to Your List of Things That You Need to Not Forget</h1>
+          <form method="POST">
+            <div class="form-group">
+              <label>Task Name</label>
+              <input type="text" class="form-control is-invalid" placeholder="" name="name">
+              {% if message %}
+                <div class="invalid-feedback"> {{message}} </div>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label>Description of your task</label>
+              <textarea class="form-control" rows="3" name="description"></textarea>
+            </div>
+            <input type="hidden" name="completed" value="0" />
+            <input type="hidden" name="ip_address" value="192.168.0.1"/>
+
+            <button type="submit" class="btn btn-info mt-2">Save Task</button>
+          </form>
+        </div>
+      </div> 
+{% endblock %}
