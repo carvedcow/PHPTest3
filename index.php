@@ -13,6 +13,7 @@ $twig = new \Twig\Environment( $loader, ['debug' => true] );
 
 // Additional twig setup can be done here with $twig
 $twig->addGlobal("twig_message", "");
+$twig->addGlobal("twig_ip", $_SERVER['SERVER_ADDR']);
 
 // Set twig within F3
 $f3->set("twig", $twig);

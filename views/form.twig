@@ -12,9 +12,11 @@
           <form method="POST">
             <div class="form-group">
               <label>Task Name</label>
+              {% if twig_message %}
               <input type="text" class="form-control is-invalid" placeholder="" name="name">
-              {% if message %}
-                <div class="invalid-feedback"> {{message}} </div>
+              <div class="invalid-feedback"> {{twig_message}} </div>
+              {% else %}
+              <input type="text" class="form-control" placeholder="" name="name">
               {% endif %}
             </div>
             <div class="form-group">
@@ -22,7 +24,7 @@
               <textarea class="form-control" rows="3" name="description"></textarea>
             </div>
             <input type="hidden" name="completed" value="0" />
-            <input type="hidden" name="ip_address" value="192.168.0.1"/>
+            <input type="hidden" name="ip_address" value="{{twig_ip}}"/>
 
             <button type="submit" class="btn btn-info mt-2">Save Task</button>
           </form>

@@ -76,10 +76,10 @@ class tasksController extends mainController{
 		}
 		else {	
 			$this->model->add( );
-			$this->f3->reroute("todo/");
+			$this->f3->reroute("/");
 			die();
 		}
-		echo $this->f3->get('twig')->render("list.twig", compact("message"));
+		echo $this->f3->get('twig')->render("form.twig", array("twig_message"=>$message));
 	}
 	
 
